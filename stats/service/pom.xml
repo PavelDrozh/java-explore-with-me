@@ -7,9 +7,7 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
 
-  <groupId>ru.practicum</groupId>
   <artifactId>service</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
 
   <name>service</name>
 
@@ -87,7 +85,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
         <configuration>
-          <mainClass>ru.practicum.StatsService</mainClass>
+          <mainClass>ru.practicum.explorewithme.StatsService</mainClass>
           <layout>JAR</layout>
         </configuration>
         <executions>
