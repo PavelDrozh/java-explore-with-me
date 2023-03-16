@@ -12,7 +12,6 @@ import ru.practicum.explorewithme.StatsResponseDto;
 import ru.practicum.explorewithme.service.StatsInfoService;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
