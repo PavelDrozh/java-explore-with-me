@@ -2,14 +2,13 @@ package ru.practicum.explorewithme.model;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import org.hibernate.Hibernate;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.GenerationType;
-import javax.persistence.Column;
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Objects;
+
+import static ru.practicum.explorewithme.model.DbConstants.*;
 
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -18,24 +17,39 @@ import java.time.LocalDateTime;
 @ToString
 @RequiredArgsConstructor
 @Entity
-@EqualsAndHashCode
-@Table(name = "stat_hits", schema = "public")
+@Table(name = STATS_TABLE, schema = "public")
 public class EndpointHit {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @Column(name = "app_name")
+    @Column(name = APP_COLUMN)
     String app;
 
-    @Column(name = "uri_name")
+    @Column(name = URI_COLUMN)
     String uri;
 
-    @Column(name = "ip_address")
+    @Column(name = IP_COLUMN)
     String ip;
 
-    @Column(name = "create_time")
+    @Column(name = CREATE_COLUMN)
     LocalDateTime timestamp;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) {
+            return false;
+        }
+        EndpointHit that = (EndpointHit) o;
+        return id != null && Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
 }
