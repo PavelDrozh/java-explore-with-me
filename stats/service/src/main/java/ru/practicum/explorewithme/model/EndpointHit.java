@@ -45,11 +45,20 @@ public class EndpointHit {
             return false;
         }
         EndpointHit that = (EndpointHit) o;
-        return id != null && Objects.equals(id, that.id);
+        boolean appEqual = app != null && Objects.equals(app, that.app);
+        boolean uriEqual = uri != null && Objects.equals(uri, that.uri);
+        boolean ipEqual = ip != null && Objects.equals(ip, that.ip);
+        boolean timeEqual = timestamp != null && Objects.equals(timestamp, that.timestamp);
+        return id != null && Objects.equals(id, that.id) && appEqual && uriEqual && ipEqual && timeEqual;
     }
 
     @Override
     public int hashCode() {
-        return getClass().hashCode();
+        int idHash = id.hashCode();
+        int appHash = app.hashCode();
+        int uriHash = uri.hashCode();
+        int ipHash = ip.hashCode();
+        int timeHash = timestamp.hashCode();
+        return idHash * 31 + appHash * 31 + uriHash * 31 + ipHash * 31 + timeHash * 31;
     }
 }
