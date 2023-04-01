@@ -25,5 +25,20 @@ public interface StatsServiceRepository extends JpaRepository<EndpointHit, Long>
             "GROUP BY h.app, h.uri " +
             "ORDER BY COUNT(h.ip) DESC")
     List<StatsResponseDto> findStats(LocalDateTime start, LocalDateTime end, List<String> uris);
+
+    @Query("SELECT new ru.practicum.explorewithme.StatsResponseDto(h.app, h.uri, COUNT(h.ip)) " +
+            "FROM EndpointHit h " +
+            "WHERE h.timestamp BETWEEN ?1 AND ?2 " +
+            "GROUP BY h.app, h.uri " +
+            "ORDER BY COUNT(h.ip) DESC")
+    List<StatsResponseDto> findStatsWithOutUri(LocalDateTime start, LocalDateTime end);
+
+    @Query("SELECT new ru.practicum.explorewithme.StatsResponseDto(h.app, h.uri, COUNT(DISTINCT h.ip)) " +
+            "FROM EndpointHit h " +
+            "WHERE h.timestamp BETWEEN ?1 AND ?2 " +
+            "GROUP BY h.app, h.uri " +
+            "ORDER BY COUNT(DISTINCT h.ip) DESC")
+    List<StatsResponseDto> findUniqueStatsWithOutUri(LocalDateTime start, LocalDateTime end);
+
 }
 
