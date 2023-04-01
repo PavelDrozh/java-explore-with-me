@@ -142,7 +142,7 @@ public class EventRequestServiceImpl implements EventRequestService {
     }
 
     private void checkRequestStatus(EventRequest req) {
-        if(!req.getStatus().equals(RequestStatus.PENDING)) {
+        if (!req.getStatus().equals(RequestStatus.PENDING)) {
             throw new EventRequestNotFoundException(String.format("Запрос с id = %d имеет статус %s," +
                             " изменение невозможно", req.getId(), req.getStatus().name()));
         }

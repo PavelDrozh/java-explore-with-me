@@ -28,6 +28,7 @@ public class UserServiceImpl implements UserService {
 
     UserRepository repository;
     UserMapper mapper;
+
     @Override
     public List<UserResponseDto> getALl(List<Long> ids, int from, int size) {
         MainPage page = new MainPage(from, size, Sort.unsorted());

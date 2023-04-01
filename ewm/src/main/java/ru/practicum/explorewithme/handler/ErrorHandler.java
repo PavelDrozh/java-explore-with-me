@@ -58,8 +58,8 @@ public class ErrorHandler {
     @ExceptionHandler
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ErrorResponse handleCompilationNotFound(final CompilationNotFoundException e) {
-        return new ErrorResponse(HttpStatus.NOT_FOUND.toString(), "Подборка не найдена", e.getMessage()
-                , LocalDateTime.now().toString());
+        return new ErrorResponse(HttpStatus.NOT_FOUND.toString(), "Подборка не найдена",
+                e.getMessage(), LocalDateTime.now().toString());
     }
 
     @ExceptionHandler

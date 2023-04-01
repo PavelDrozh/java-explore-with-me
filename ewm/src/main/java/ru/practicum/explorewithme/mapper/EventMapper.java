@@ -22,7 +22,7 @@ public class EventMapper {
     CategoryMapper categoryMapper;
     UserMapper userMapper;
 
-    public Event toEvent (EventCreateDto dto) {
+    public Event toEvent(EventCreateDto dto) {
         Event event = new Event();
         event.setAnnotation(dto.getAnnotation());
         event.setDescription(dto.getDescription());

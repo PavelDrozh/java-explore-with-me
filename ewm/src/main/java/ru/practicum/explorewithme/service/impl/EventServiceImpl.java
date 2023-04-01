@@ -218,7 +218,7 @@ public class EventServiceImpl implements EventService {
         client.createHit(statsMapper.toStatsCreateDto(request));
         Sort sortBy = Sort.unsorted();
         if (sort != null) {
-            if(SortForPubEventsController.valueOf(sort).equals(SortForPubEventsController.EVENT_DATE)) {
+            if (SortForPubEventsController.valueOf(sort).equals(SortForPubEventsController.EVENT_DATE)) {
                 sortBy = Sort.by("eventDate");
             } else if (SortForPubEventsController.valueOf(sort).equals(SortForPubEventsController.VIEWS)) {
                 sortBy = Sort.by("views");
@@ -280,5 +280,4 @@ public class EventServiceImpl implements EventService {
 
         return mapper.toEventFullDto(event);
     }
-    
 }
