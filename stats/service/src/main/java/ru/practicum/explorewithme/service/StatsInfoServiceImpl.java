@@ -14,7 +14,6 @@ import ru.practicum.explorewithme.repository.StatsServiceRepository;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -28,19 +27,23 @@ public class StatsInfoServiceImpl implements StatsInfoService {
 
     @Override
     public List<StatsResponseDto> getStatistics(String start, String end, List<String> uris, Boolean unique) {
-        if (uris.isEmpty()) {
-            return new ArrayList<>();
-        }
         LocalDateTime startDate = LocalDateTime.parse(start, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         LocalDateTime endDate = LocalDateTime.parse(end, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         checkDates(startDate, endDate);
 
         List<StatsResponseDto> responseDtos;
-
-        if (unique) {
-            responseDtos = repository.findUniqueStats(startDate, endDate, uris);
+        if (uris.isEmpty()) {
+            if (unique) {
+                responseDtos = repository.findUniqueStatsWithOutUri(startDate, endDate);
+            } else {
+                responseDtos = repository.findStatsWithOutUri(startDate, endDate);
+            }
         } else {
-            responseDtos = repository.findStats(startDate, endDate, uris);
+            if (unique) {
+                responseDtos = repository.findUniqueStats(startDate, endDate, uris);
+            } else {
+                responseDtos = repository.findStats(startDate, endDate, uris);
+            }
         }
         return responseDtos;
     }
