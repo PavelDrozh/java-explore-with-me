@@ -37,9 +37,9 @@ public class LocationPrivateController {
     }
 
     @GetMapping("locator")
-    public LocatorShortResponseDto getByLocation( @PathVariable Long userId,
-                                                  @RequestParam Float lat,
-                                                  @RequestParam Float lon) {
+    public LocatorShortResponseDto getByLocation(@PathVariable Long userId,
+                                                 @RequestParam Float lat,
+                                                 @RequestParam Float lon) {
         return service.getByLocationForUser(userId, lat, lon);
     }
 }
