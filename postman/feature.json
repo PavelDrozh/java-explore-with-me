@@ -954,7 +954,7 @@
 											"\r",
 											"pm.test(\"Test create event\", function () {\r",
 											"    var jsonData = pm.response.json();\r",
-											"    pm.expect(jsonData.id).to.eql(1);\r",
+											"    pm.expect(jsonData.id).to.eql(39);\r",
 											"    pm.expect(jsonData.annotation).to.eql(\"Небольшая аннотация события, которое я не могу придумать))\");\r",
 											"    pm.expect(jsonData.title).to.eql(\"Заголовок события\");\r",
 											"});"
@@ -1010,7 +1010,7 @@
 											"\r",
 											"pm.test(\"Test create event\", function () {\r",
 											"    var jsonData = pm.response.json();\r",
-											"    pm.expect(jsonData.id).to.eql(2);\r",
+											"    pm.expect(jsonData.id).to.eql(40);\r",
 											"    pm.expect(jsonData.annotation).to.eql(\"Небольшая аннотация ВТОРОГО события, которое я не могу придумать))\");\r",
 											"    pm.expect(jsonData.title).to.eql(\"Заголовок ВТОРОГО события\");\r",
 											"});"
@@ -1251,7 +1251,7 @@
 											"\r",
 											"pm.test(\"Test create event\", function () {\r",
 											"    var jsonData = pm.response.json();\r",
-											"    pm.expect(jsonData.id).to.eql(3);\r",
+											"    pm.expect(jsonData.id).to.eql(41);\r",
 											"    pm.expect(jsonData.annotation).to.eql(\"Небольшая аннотация ТРЕТЬЕГО события, ВТОРОГО пользователя\");\r",
 											"    pm.expect(jsonData.title).to.eql(\"Заголовок ТРЕТЬЕГО события\");\r",
 											"});"
@@ -2175,7 +2175,7 @@
 											"\r",
 											"pm.test(\"Test create event\", function () {\r",
 											"    var jsonData = pm.response.json();\r",
-											"    pm.expect(jsonData.id).to.eql(1);\r",
+											"    pm.expect(jsonData.id).to.eql(39);\r",
 											"    pm.expect(jsonData.annotation).to.eql(\"Небольшая аннотация события, которое я не могу придумать))\");\r",
 											"    pm.expect(jsonData.title).to.eql(\"Заголовок события\");\r",
 											"    pm.expect(jsonData.state).to.eql(\"PUBLISHED\");\r",
@@ -2210,7 +2210,7 @@
 									"variable": [
 										{
 											"key": "eventId",
-											"value": "1"
+											"value": "39"
 										}
 									]
 								}
@@ -2232,7 +2232,7 @@
 											"\r",
 											"pm.test(\"Test create event\", function () {\r",
 											"    var jsonData = pm.response.json();\r",
-											"    pm.expect(jsonData.id).to.eql(3);\r",
+											"    pm.expect(jsonData.id).to.eql(41);\r",
 											"    pm.expect(jsonData.annotation).to.eql(\"Небольшая аннотация ТРЕТЬЕГО события, ВТОРОГО пользователя\");\r",
 											"    pm.expect(jsonData.title).to.eql(\"Заголовок ТРЕТЬЕГО события\");\r",
 											"    pm.expect(jsonData.state).to.eql(\"PUBLISHED\");\r",
@@ -2267,7 +2267,7 @@
 									"variable": [
 										{
 											"key": "eventId",
-											"value": "3"
+											"value": "41"
 										}
 									]
 								}
