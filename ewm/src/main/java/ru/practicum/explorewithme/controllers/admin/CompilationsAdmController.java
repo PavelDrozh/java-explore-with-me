@@ -6,9 +6,9 @@ import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import ru.practicum.explorewithme.dto.CompilationCreateDto;
-import ru.practicum.explorewithme.dto.CompilationResponseDto;
-import ru.practicum.explorewithme.dto.CompilationUpdateDto;
+import ru.practicum.explorewithme.dto.compilation.CompilationCreateDto;
+import ru.practicum.explorewithme.dto.compilation.CompilationResponseDto;
+import ru.practicum.explorewithme.dto.compilation.CompilationUpdateDto;
 import ru.practicum.explorewithme.service.CompilationsService;
 
 import javax.validation.Valid;

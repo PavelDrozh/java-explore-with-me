@@ -1,8 +1,8 @@
 package ru.practicum.explorewithme.mapper;
 
 import org.springframework.stereotype.Component;
-import ru.practicum.explorewithme.dto.CompilationCreateDto;
-import ru.practicum.explorewithme.dto.CompilationResponseDto;
+import ru.practicum.explorewithme.dto.compilation.CompilationCreateDto;
+import ru.practicum.explorewithme.dto.compilation.CompilationResponseDto;
 import ru.practicum.explorewithme.model.Compilation;
 
 @Component

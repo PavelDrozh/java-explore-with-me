@@ -71,6 +71,13 @@ public class ErrorHandler {
 
     @ExceptionHandler
     @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ErrorResponse handleLocatorNotFound(final LocatorNotFoundException e) {
+        return new ErrorResponse(HttpStatus.NOT_FOUND.toString(), "Локатор не найден",
+                e.getMessage(), LocalDateTime.now().toString());
+    }
+
+    @ExceptionHandler
+    @ResponseStatus(HttpStatus.NOT_FOUND)
     public ErrorResponse handleEventRequestNotFound(final EventRequestNotFoundException e) {
         return new ErrorResponse(HttpStatus.NOT_FOUND.toString(), "Запрос не найден",
                 e.getMessage(), LocalDateTime.now().toString());

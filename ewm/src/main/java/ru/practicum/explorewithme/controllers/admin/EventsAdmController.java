@@ -5,8 +5,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
-import ru.practicum.explorewithme.dto.EventFullDto;
-import ru.practicum.explorewithme.dto.UpdateEventAdminRequestDto;
+import ru.practicum.explorewithme.dto.event.EventFullDto;
+import ru.practicum.explorewithme.dto.event.UpdateEventAdminRequestDto;
 import ru.practicum.explorewithme.model.State;
 import ru.practicum.explorewithme.service.EventService;
 

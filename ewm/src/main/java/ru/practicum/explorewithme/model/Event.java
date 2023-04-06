@@ -2,7 +2,7 @@ package ru.practicum.explorewithme.model;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-import ru.practicum.explorewithme.dto.Location;
+import ru.practicum.explorewithme.dto.event.Location;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;

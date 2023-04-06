@@ -1,8 +1,8 @@
 package ru.practicum.explorewithme.mapper;
 
 import org.springframework.stereotype.Component;
-import ru.practicum.explorewithme.dto.EventRequestStatusUpdateResult;
-import ru.practicum.explorewithme.dto.ParticipationRequestDto;
+import ru.practicum.explorewithme.dto.request.EventRequestStatusUpdateResult;
+import ru.practicum.explorewithme.dto.request.ParticipationRequestDto;
 import ru.practicum.explorewithme.model.EventRequest;
 import ru.practicum.explorewithme.model.RequestStatus;
 

@@ -1,14 +1,14 @@
-package ru.practicum.explorewithme.dto;
+package ru.practicum.explorewithme.dto.category;
 
 import lombok.AccessLevel;
-import lombok.Builder;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
 
+import javax.validation.constraints.NotBlank;
+
 @Data
-@Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class UserShortResponseDto {
-    Long id;
+public class CategoryCreateDto {
+    @NotBlank
     String name;
 }

@@ -1,8 +1,8 @@
 package ru.practicum.explorewithme.service;
 
-import ru.practicum.explorewithme.dto.EventRequestStatusUpdateRequest;
-import ru.practicum.explorewithme.dto.EventRequestStatusUpdateResult;
-import ru.practicum.explorewithme.dto.ParticipationRequestDto;
+import ru.practicum.explorewithme.dto.request.EventRequestStatusUpdateRequest;
+import ru.practicum.explorewithme.dto.request.EventRequestStatusUpdateResult;
+import ru.practicum.explorewithme.dto.request.ParticipationRequestDto;
 
 import java.util.List;
 

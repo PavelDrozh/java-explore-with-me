@@ -1,9 +1,9 @@
 package ru.practicum.explorewithme.mapper;
 
 import org.springframework.stereotype.Component;
-import ru.practicum.explorewithme.dto.UserResponseDto;
-import ru.practicum.explorewithme.dto.UserShortResponseDto;
-import ru.practicum.explorewithme.dto.UsersCreateDto;
+import ru.practicum.explorewithme.dto.user.UserResponseDto;
+import ru.practicum.explorewithme.dto.user.UserShortResponseDto;
+import ru.practicum.explorewithme.dto.user.UsersCreateDto;
 import ru.practicum.explorewithme.model.User;
 
 @Component

@@ -1,18 +1,23 @@
-package ru.practicum.explorewithme.dto;
+package ru.practicum.explorewithme.dto.compilation;
 
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class EventRequestStatusUpdateRequest {
-    @NotEmpty
-    List<Long> requestIds;
+public class CompilationCreateDto {
+
     @NotNull
-    EventRequestUpdateStatus status;
+    List<Long> events;
+
+    @NotNull
+    Boolean pinned;
+
+    @NotBlank
+    String title;
 }

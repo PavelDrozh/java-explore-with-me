@@ -1,4 +1,4 @@
-package ru.practicum.explorewithme.dto;
+package ru.practicum.explorewithme.dto.event;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
