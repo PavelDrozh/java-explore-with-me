@@ -1163,7 +1163,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/admin/eventsArea/location?lat=11&lon=11",
+									"raw": "{{baseUrl}}/admin/eventsArea/location?pointLat=11&pointLon=11",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -1174,11 +1174,11 @@
 									],
 									"query": [
 										{
-											"key": "lat",
+											"key": "pointLat",
 											"value": "11"
 										},
 										{
-											"key": "lon",
+											"key": "pointLon",
 											"value": "11"
 										}
 									]
@@ -1786,7 +1786,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/users/:userId/eventsArea/location?lat=20&lon=20",
+									"raw": "{{baseUrl}}/users/:userId/eventsArea/location?pointLat=20&pointLon=20",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -1798,11 +1798,11 @@
 									],
 									"query": [
 										{
-											"key": "lat",
+											"key": "pointLat",
 											"value": "20"
 										},
 										{
-											"key": "lon",
+											"key": "pointLon",
 											"value": "20"
 										}
 									],
@@ -1961,17 +1961,17 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/location/:locatorId",
+									"raw": "{{baseUrl}}/eventsArea/:eventsAreaId",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
-										"location",
-										":locatorId"
+										"eventsArea",
+										":eventsAreaId"
 									],
 									"variable": [
 										{
-											"key": "locatorId",
+											"key": "eventsAreaId",
 											"value": "120"
 										}
 									]
@@ -2013,7 +2013,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/eventsArea/location?lat=20&lon=20",
+									"raw": "{{baseUrl}}/eventsArea/location?pointLat=20&pointLon=20",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -2023,11 +2023,11 @@
 									],
 									"query": [
 										{
-											"key": "lat",
+											"key": "pointLat",
 											"value": "20"
 										},
 										{
-											"key": "lon",
+											"key": "pointLon",
 											"value": "20"
 										}
 									]
