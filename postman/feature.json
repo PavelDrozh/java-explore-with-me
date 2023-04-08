@@ -10,7 +10,7 @@
 			"name": "Admin",
 			"item": [
 				{
-					"name": "Locator",
+					"name": "Events Area",
 					"item": [
 						{
 							"name": "Get ALL Empty",
@@ -46,20 +46,20 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/admin/location",
+									"raw": "{{baseUrl}}/admin/eventsArea",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"admin",
-										"location"
+										"eventsArea"
 									]
 								}
 							},
 							"response": []
 						},
 						{
-							"name": "Create Locator",
+							"name": "Create Events Area",
 							"event": [
 								{
 									"listen": "test",
@@ -105,20 +105,20 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseUrl}}/admin/location",
+									"raw": "{{baseUrl}}/admin/eventsArea",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"admin",
-										"location"
+										"eventsArea"
 									]
 								}
 							},
 							"response": []
 						},
 						{
-							"name": "Create exist Name Locator",
+							"name": "Create exist Name Events Area",
 							"event": [
 								{
 									"listen": "test",
@@ -160,20 +160,20 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseUrl}}/admin/location",
+									"raw": "{{baseUrl}}/admin/eventsArea",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"admin",
-										"location"
+										"eventsArea"
 									]
 								}
 							},
 							"response": []
 						},
 						{
-							"name": "Create exist Location Locator",
+							"name": "Create exist Location Events Area",
 							"event": [
 								{
 									"listen": "test",
@@ -215,20 +215,20 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseUrl}}/admin/location",
+									"raw": "{{baseUrl}}/admin/eventsArea",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"admin",
-										"location"
+										"eventsArea"
 									]
 								}
 							},
 							"response": []
 						},
 						{
-							"name": "Create Locator incorrect Body",
+							"name": "Create Events Area incorrect Body",
 							"event": [
 								{
 									"listen": "test",
@@ -266,20 +266,20 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseUrl}}/admin/location",
+									"raw": "{{baseUrl}}/admin/eventsArea",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"admin",
-										"location"
+										"eventsArea"
 									]
 								}
 							},
 							"response": []
 						},
 						{
-							"name": "Get Locator by Id",
+							"name": "Get Events Area by Id",
 							"event": [
 								{
 									"listen": "test",
@@ -317,18 +317,18 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/admin/location/:locatorId",
+									"raw": "{{baseUrl}}/admin/eventsArea/:eventsAreaId",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"admin",
-										"location",
-										":locatorId"
+										"eventsArea",
+										":eventsAreaId"
 									],
 									"variable": [
 										{
-											"key": "locatorId",
+											"key": "eventsAreaId",
 											"value": "1"
 										}
 									]
@@ -337,7 +337,7 @@
 							"response": []
 						},
 						{
-							"name": "Get Locator by Location",
+							"name": "Get Events Area by Location",
 							"event": [
 								{
 									"listen": "test",
@@ -375,22 +375,22 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/admin/location/locator?lat=11&lon=11",
+									"raw": "{{baseUrl}}/admin/eventsArea/location?pointLat=11&pointLon=11",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"admin",
-										"location",
-										"locator"
+										"eventsArea",
+										"location"
 									],
 									"query": [
 										{
-											"key": "lat",
+											"key": "pointLat",
 											"value": "11"
 										},
 										{
-											"key": "lon",
+											"key": "pointLon",
 											"value": "11"
 										}
 									]
@@ -399,7 +399,7 @@
 							"response": []
 						},
 						{
-							"name": "Get Locator by Wrong Location",
+							"name": "Get Events Area by Wrong Location",
 							"event": [
 								{
 									"listen": "test",
@@ -432,22 +432,22 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/admin/location/locator?lat=15&lon=17",
+									"raw": "{{baseUrl}}/admin/eventsArea/location?pointLat=15&pointLon=17",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"admin",
-										"location",
-										"locator"
+										"eventsArea",
+										"location"
 									],
 									"query": [
 										{
-											"key": "lat",
+											"key": "pointLat",
 											"value": "15"
 										},
 										{
-											"key": "lon",
+											"key": "pointLon",
 											"value": "17"
 										}
 									]
@@ -456,7 +456,7 @@
 							"response": []
 						},
 						{
-							"name": "Get Locator by incorrect Id",
+							"name": "Get Events Area by incorrect Id",
 							"event": [
 								{
 									"listen": "test",
@@ -489,18 +489,18 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/admin/location/:locatorId",
+									"raw": "{{baseUrl}}/admin/eventsArea/:eventsAreaId",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"admin",
-										"location",
-										":locatorId"
+										"eventsArea",
+										":eventsAreaId"
 									],
 									"variable": [
 										{
-											"key": "locatorId",
+											"key": "eventsAreaId",
 											"value": "120"
 										}
 									]
@@ -547,20 +547,20 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/admin/location",
+									"raw": "{{baseUrl}}/admin/eventsArea",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"admin",
-										"location"
+										"eventsArea"
 									]
 								}
 							},
 							"response": []
 						},
 						{
-							"name": "Update Locator",
+							"name": "Update Events Area",
 							"event": [
 								{
 									"listen": "test",
@@ -606,18 +606,18 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseUrl}}/admin/location/:locatorId",
+									"raw": "{{baseUrl}}/admin/eventsArea/:eventsAreaId",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"admin",
-										"location",
-										":locatorId"
+										"eventsArea",
+										":eventsAreaId"
 									],
 									"variable": [
 										{
-											"key": "locatorId",
+											"key": "eventsAreaId",
 											"value": "1"
 										}
 									]
@@ -626,7 +626,7 @@
 							"response": []
 						},
 						{
-							"name": "Create second Locator(id 4)",
+							"name": "Create second Events Area(id 4)",
 							"event": [
 								{
 									"listen": "test",
@@ -672,20 +672,20 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseUrl}}/admin/location",
+									"raw": "{{baseUrl}}/admin/eventsArea",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"admin",
-										"location"
+										"eventsArea"
 									]
 								}
 							},
 							"response": []
 						},
 						{
-							"name": "Delete second Locator(id 4)",
+							"name": "Delete second Events Area(id 4)",
 							"event": [
 								{
 									"listen": "test",
@@ -723,18 +723,18 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseUrl}}/admin/location/:locatorId",
+									"raw": "{{baseUrl}}/admin/eventsArea/:eventsAreaId",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"admin",
-										"location",
-										":locatorId"
+										"eventsArea",
+										":eventsAreaId"
 									],
 									"variable": [
 										{
-											"key": "locatorId",
+											"key": "eventsAreaId",
 											"value": "4"
 										}
 									]
@@ -743,7 +743,7 @@
 							"response": []
 						},
 						{
-							"name": "Delete wron Locator",
+							"name": "Delete wron Events Area",
 							"event": [
 								{
 									"listen": "test",
@@ -781,19 +781,19 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseUrl}}/admin/location/:locatorId",
+									"raw": "{{baseUrl}}/admin/eventsArea/:eventsAreaId",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"admin",
-										"location",
-										":locatorId"
+										"eventsArea",
+										":eventsAreaId"
 									],
 									"variable": [
 										{
-											"key": "locatorId",
-											"value": "200"
+											"key": "eventsAreaId",
+											"value": "120"
 										}
 									]
 								}
@@ -834,13 +834,13 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/admin/location?name=asdasd",
+									"raw": "{{baseUrl}}/admin/eventsArea?name=asdasd",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"admin",
-										"location"
+										"eventsArea"
 									],
 									"query": [
 										{
@@ -1054,10 +1054,10 @@
 					]
 				},
 				{
-					"name": "Locator With Events",
+					"name": "Events Area With Events",
 					"item": [
 						{
-							"name": "Get Locator by Id With Events",
+							"name": "Get Events Area by Id With Events",
 							"event": [
 								{
 									"listen": "test",
@@ -1100,18 +1100,18 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/admin/location/:locatorId",
+									"raw": "{{baseUrl}}/admin/eventsArea/:eventsAreaId",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"admin",
-										"location",
-										":locatorId"
+										"eventsArea",
+										":eventsAreaId"
 									],
 									"variable": [
 										{
-											"key": "locatorId",
+											"key": "eventsAreaId",
 											"value": "1"
 										}
 									]
@@ -1120,7 +1120,7 @@
 							"response": []
 						},
 						{
-							"name": "Get Locator by Location With Events",
+							"name": "Get Events Area by Location With Events",
 							"event": [
 								{
 									"listen": "test",
@@ -1163,14 +1163,14 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/admin/location/locator?lat=11&lon=11",
+									"raw": "{{baseUrl}}/admin/eventsArea/location?lat=11&lon=11",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"admin",
-										"location",
-										"locator"
+										"eventsArea",
+										"location"
 									],
 									"query": [
 										{
@@ -1295,7 +1295,7 @@
 					]
 				},
 				{
-					"name": "Locator With Events",
+					"name": "Events Area With Events",
 					"item": [
 						{
 							"name": "Get ALL Empty Wrong Name",
@@ -1331,14 +1331,14 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/users/:userId/location?name=first",
+									"raw": "{{baseUrl}}/users/:userId/eventsArea?name=first",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"users",
 										":userId",
-										"location"
+										"eventsArea"
 									],
 									"query": [
 										{
@@ -1395,86 +1395,226 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/users/:userId/location",
+									"raw": "{{baseUrl}}/users/:userId/eventsArea",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"users",
 										":userId",
+										"eventsArea"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Events Area by Id For User 1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+											"});\r",
+											"pm.test(\"Test get locator with events\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.id).to.eql(1);\r",
+											"    pm.expect(jsonData.name).to.eql('updatedLocator');\r",
+											"    pm.expect(jsonData.lat).to.eql(10);\r",
+											"    pm.expect(jsonData.lon).to.eql(10);\r",
+											"    pm.expect(jsonData.distance).to.eql(300);\r",
+											"    pm.expect(jsonData.events).to.exist;\r",
+											"    pm.expect(jsonData.events.length, 'events count in total').to.eql(2);\r",
+											"    pm.expect(jsonData.events[0].annotation).to.eql(\"Небольшая аннотация события, которое я не могу придумать))\");\r",
+											"    pm.expect(jsonData.events[0].title).to.eql(\"Заголовок события\");\r",
+											"    pm.expect(jsonData.events[1].annotation).to.eql(\"Небольшая аннотация ВТОРОГО события, которое я не могу придумать))\");\r",
+											"    pm.expect(jsonData.events[1].title).to.eql(\"Заголовок ВТОРОГО события\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/users/:userId/eventsArea/:eventsAreaId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										":userId",
+										"eventsArea",
+										":eventsAreaId"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "1"
+										},
+										{
+											"key": "eventsAreaId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Events Area by Id For User 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+											"});\r",
+											"pm.test(\"Test get locator with events\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.id).to.eql(1);\r",
+											"    pm.expect(jsonData.name).to.eql('updatedLocator');\r",
+											"    pm.expect(jsonData.lat).to.eql(10);\r",
+											"    pm.expect(jsonData.lon).to.eql(10);\r",
+											"    pm.expect(jsonData.distance).to.eql(300);\r",
+											"    pm.expect(jsonData.events).to.exist;\r",
+											"    pm.expect(jsonData.events.length, 'events count in total').to.eql(1);\r",
+											"    pm.expect(jsonData.events[0].annotation).to.eql(\"Небольшая аннотация ТРЕТЬЕГО события, ВТОРОГО пользователя\");\r",
+											"    pm.expect(jsonData.events[0].title).to.eql(\"Заголовок ТРЕТЬЕГО события\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/users/:userId/eventsArea/:eventsAreaId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										":userId",
+										"eventsArea",
+										":eventsAreaId"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "2"
+										},
+										{
+											"key": "eventsAreaId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Events Area by Loc For User 1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+											"});\r",
+											"pm.test(\"Test get locator with events\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.id).to.eql(1);\r",
+											"    pm.expect(jsonData.name).to.eql('updatedLocator');\r",
+											"    pm.expect(jsonData.lat).to.eql(10);\r",
+											"    pm.expect(jsonData.lon).to.eql(10);\r",
+											"    pm.expect(jsonData.distance).to.eql(300);\r",
+											"    pm.expect(jsonData.events).to.exist;\r",
+											"    pm.expect(jsonData.events.length, 'events count in total').to.eql(2);\r",
+											"    pm.expect(jsonData.events[0].annotation).to.eql(\"Небольшая аннотация события, которое я не могу придумать))\");\r",
+											"    pm.expect(jsonData.events[0].title).to.eql(\"Заголовок события\");\r",
+											"    pm.expect(jsonData.events[1].annotation).to.eql(\"Небольшая аннотация ВТОРОГО события, которое я не могу придумать))\");\r",
+											"    pm.expect(jsonData.events[1].title).to.eql(\"Заголовок ВТОРОГО события\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/users/:userId/eventsArea/location?pointLat=11&pointLon=11",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										":userId",
+										"eventsArea",
 										"location"
 									],
-									"variable": [
+									"query": [
 										{
-											"key": "userId",
-											"value": "2"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get Locator by Id For User 1",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
-											"});\r",
-											"pm.test(\"Test get locator with events\", function () {\r",
-											"    var jsonData = pm.response.json();\r",
-											"    pm.expect(jsonData.id).to.eql(1);\r",
-											"    pm.expect(jsonData.name).to.eql('updatedLocator');\r",
-											"    pm.expect(jsonData.lat).to.eql(10);\r",
-											"    pm.expect(jsonData.lon).to.eql(10);\r",
-											"    pm.expect(jsonData.distance).to.eql(300);\r",
-											"    pm.expect(jsonData.events).to.exist;\r",
-											"    pm.expect(jsonData.events.length, 'events count in total').to.eql(2);\r",
-											"    pm.expect(jsonData.events[0].annotation).to.eql(\"Небольшая аннотация события, которое я не могу придумать))\");\r",
-											"    pm.expect(jsonData.events[0].title).to.eql(\"Заголовок события\");\r",
-											"    pm.expect(jsonData.events[1].annotation).to.eql(\"Небольшая аннотация ВТОРОГО события, которое я не могу придумать))\");\r",
-											"    pm.expect(jsonData.events[1].title).to.eql(\"Заголовок ВТОРОГО события\");\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Accept",
-										"value": "*/*",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/users/:userId/location/:locatorId",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"users",
-										":userId",
-										"location",
-										":locatorId"
-									],
-									"variable": [
-										{
-											"key": "userId",
-											"value": "1"
+											"key": "pointLat",
+											"value": "11"
 										},
 										{
-											"key": "locatorId",
+											"key": "pointLon",
+											"value": "11"
+										}
+									],
+									"variable": [
+										{
+											"key": "userId",
 											"value": "1"
 										}
 									]
@@ -1483,7 +1623,7 @@
 							"response": []
 						},
 						{
-							"name": "Get Locator by Id For User 2",
+							"name": "Get Events Area by Loc For User 2",
 							"event": [
 								{
 									"listen": "test",
@@ -1524,163 +1664,23 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/users/:userId/location/:locatorId",
+									"raw": "{{baseUrl}}/users/:userId/eventsArea/location?pointLat=11&pointLon=11",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"users",
 										":userId",
-										"location",
-										":locatorId"
-									],
-									"variable": [
-										{
-											"key": "userId",
-											"value": "2"
-										},
-										{
-											"key": "locatorId",
-											"value": "1"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get Locator by Loc For User 1",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
-											"});\r",
-											"pm.test(\"Test get locator with events\", function () {\r",
-											"    var jsonData = pm.response.json();\r",
-											"    pm.expect(jsonData.id).to.eql(1);\r",
-											"    pm.expect(jsonData.name).to.eql('updatedLocator');\r",
-											"    pm.expect(jsonData.lat).to.eql(10);\r",
-											"    pm.expect(jsonData.lon).to.eql(10);\r",
-											"    pm.expect(jsonData.distance).to.eql(300);\r",
-											"    pm.expect(jsonData.events).to.exist;\r",
-											"    pm.expect(jsonData.events.length, 'events count in total').to.eql(2);\r",
-											"    pm.expect(jsonData.events[0].annotation).to.eql(\"Небольшая аннотация события, которое я не могу придумать))\");\r",
-											"    pm.expect(jsonData.events[0].title).to.eql(\"Заголовок события\");\r",
-											"    pm.expect(jsonData.events[1].annotation).to.eql(\"Небольшая аннотация ВТОРОГО события, которое я не могу придумать))\");\r",
-											"    pm.expect(jsonData.events[1].title).to.eql(\"Заголовок ВТОРОГО события\");\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Accept",
-										"value": "*/*",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/users/:userId/location/locator?lat=11&lon=11",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"users",
-										":userId",
-										"location",
-										"locator"
+										"eventsArea",
+										"location"
 									],
 									"query": [
 										{
-											"key": "lat",
+											"key": "pointLat",
 											"value": "11"
 										},
 										{
-											"key": "lon",
-											"value": "11"
-										}
-									],
-									"variable": [
-										{
-											"key": "userId",
-											"value": "1"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get Locator by Loc For User 2",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
-											"});\r",
-											"pm.test(\"Test get locator with events\", function () {\r",
-											"    var jsonData = pm.response.json();\r",
-											"    pm.expect(jsonData.id).to.eql(1);\r",
-											"    pm.expect(jsonData.name).to.eql('updatedLocator');\r",
-											"    pm.expect(jsonData.lat).to.eql(10);\r",
-											"    pm.expect(jsonData.lon).to.eql(10);\r",
-											"    pm.expect(jsonData.distance).to.eql(300);\r",
-											"    pm.expect(jsonData.events).to.exist;\r",
-											"    pm.expect(jsonData.events.length, 'events count in total').to.eql(1);\r",
-											"    pm.expect(jsonData.events[0].annotation).to.eql(\"Небольшая аннотация ТРЕТЬЕГО события, ВТОРОГО пользователя\");\r",
-											"    pm.expect(jsonData.events[0].title).to.eql(\"Заголовок ТРЕТЬЕГО события\");\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Accept",
-										"value": "*/*",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/users/:userId/location/locator?lat=11&lon=11",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"users",
-										":userId",
-										"location",
-										"locator"
-									],
-									"query": [
-										{
-											"key": "lat",
-											"value": "11"
-										},
-										{
-											"key": "lon",
+											"key": "pointLon",
 											"value": "11"
 										}
 									],
@@ -1695,7 +1695,7 @@
 							"response": []
 						},
 						{
-							"name": "Get Locator by incorrect Id",
+							"name": "Get Events Area by incorrect Id",
 							"event": [
 								{
 									"listen": "test",
@@ -1728,15 +1728,15 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/users/:userId/location/:locatorId",
+									"raw": "{{baseUrl}}/users/:userId/eventsArea/:eventsAreaId",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"users",
 										":userId",
-										"location",
-										":locatorId"
+										"eventsArea",
+										":eventsAreaId"
 									],
 									"variable": [
 										{
@@ -1744,7 +1744,7 @@
 											"value": "1"
 										},
 										{
-											"key": "locatorId",
+											"key": "eventsAreaId",
 											"value": "120"
 										}
 									]
@@ -1753,7 +1753,7 @@
 							"response": []
 						},
 						{
-							"name": "Get Locator by Wrong Location",
+							"name": "Get Events Area by Wrong Location",
 							"event": [
 								{
 									"listen": "test",
@@ -1786,15 +1786,15 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/users/:userId/location/locator?lat=20&lon=20",
+									"raw": "{{baseUrl}}/users/:userId/eventsArea/location?lat=20&lon=20",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"users",
 										":userId",
-										"location",
-										"locator"
+										"eventsArea",
+										"location"
 									],
 									"query": [
 										{
@@ -1860,12 +1860,12 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/location?name=asdasd",
+									"raw": "{{baseUrl}}/eventsArea?name=asdasd",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
-										"location"
+										"eventsArea"
 									],
 									"query": [
 										{
@@ -1916,19 +1916,19 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/location",
+									"raw": "{{baseUrl}}/eventsArea",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
-										"location"
+										"eventsArea"
 									]
 								}
 							},
 							"response": []
 						},
 						{
-							"name": "Get Locator by incorrect Id",
+							"name": "Get Events Area by incorrect Id",
 							"event": [
 								{
 									"listen": "test",
@@ -1980,7 +1980,7 @@
 							"response": []
 						},
 						{
-							"name": "Get Locator by Wrong Location",
+							"name": "Get Events Area by Wrong Location",
 							"event": [
 								{
 									"listen": "test",
@@ -2013,13 +2013,13 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/location/locator?lat=20&lon=20",
+									"raw": "{{baseUrl}}/eventsArea/location?lat=20&lon=20",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
-										"location",
-										"locator"
+										"eventsArea",
+										"location"
 									],
 									"query": [
 										{
@@ -2036,7 +2036,7 @@
 							"response": []
 						},
 						{
-							"name": "Get Locator by Id Events Empty",
+							"name": "Get Events Area by Id Events Empty",
 							"event": [
 								{
 									"listen": "test",
@@ -2075,17 +2075,17 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/location/:locatorId",
+									"raw": "{{baseUrl}}/eventsArea/:eventsAreaId",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
-										"location",
-										":locatorId"
+										"eventsArea",
+										":eventsAreaId"
 									],
 									"variable": [
 										{
-											"key": "locatorId",
+											"key": "eventsAreaId",
 											"value": "1"
 										}
 									]
@@ -2094,7 +2094,7 @@
 							"response": []
 						},
 						{
-							"name": "Get Locator by Location Copy",
+							"name": "Get Events Area by Location",
 							"event": [
 								{
 									"listen": "test",
@@ -2133,21 +2133,21 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/location/locator?lat=11&lon=11",
+									"raw": "{{baseUrl}}/eventsArea/location?pointLat=11&pointLon=11",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
-										"location",
-										"locator"
+										"eventsArea",
+										"location"
 									],
 									"query": [
 										{
-											"key": "lat",
+											"key": "pointLat",
 											"value": "11"
 										},
 										{
-											"key": "lon",
+											"key": "pointLon",
 											"value": "11"
 										}
 									]
@@ -2277,10 +2277,10 @@
 					]
 				},
 				{
-					"name": "Locator With Events",
+					"name": "Events Area With Events",
 					"item": [
 						{
-							"name": "Get Locator by Id (Published events)",
+							"name": "Get Events Area by Id (Published events)",
 							"event": [
 								{
 									"listen": "test",
@@ -2323,17 +2323,17 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/location/:locatorId",
+									"raw": "{{baseUrl}}/eventsArea/:eventsAreaId",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
-										"location",
-										":locatorId"
+										"eventsArea",
+										":eventsAreaId"
 									],
 									"variable": [
 										{
-											"key": "locatorId",
+											"key": "eventsAreaId",
 											"value": "1"
 										}
 									]
@@ -2342,7 +2342,7 @@
 							"response": []
 						},
 						{
-							"name": "Get Locator by Loc (Published Events)",
+							"name": "Get Events Area by Loc (Published Events)",
 							"event": [
 								{
 									"listen": "test",
@@ -2385,21 +2385,21 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/location/locator?lat=11&lon=11",
+									"raw": "{{baseUrl}}/eventsArea/location?pointLat=11&pointLon=11",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
-										"location",
-										"locator"
+										"eventsArea",
+										"location"
 									],
 									"query": [
 										{
-											"key": "lat",
+											"key": "pointLat",
 											"value": "11"
 										},
 										{
-											"key": "lon",
+											"key": "pointLon",
 											"value": "11"
 										}
 									]
