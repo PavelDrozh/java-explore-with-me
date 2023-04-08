@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS requests (
     UNIQUE (event_id, requester_id)
 );
 
-CREATE TABLE IF NOT EXISTS locator (
+CREATE TABLE IF NOT EXISTS events_area (
     id        BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     lat       FLOAT NOT NULL,
     lon       FLOAT NOT NULL,

@@ -1,4 +1,4 @@
-package ru.practicum.explorewithme.dto.locator;
+package ru.practicum.explorewithme.dto.events_area;
 
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -8,7 +8,7 @@ import lombok.experimental.FieldDefaults;
 @Data
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class LocatorResponseDto {
+public class EventsAreaResponseDto {
     Long id;
     Float lat;
     Float lon;

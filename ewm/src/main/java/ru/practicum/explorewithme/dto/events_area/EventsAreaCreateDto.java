@@ -1,4 +1,4 @@
-package ru.practicum.explorewithme.dto.locator;
+package ru.practicum.explorewithme.dto.events_area;
 
 import lombok.AccessLevel;
 import lombok.Data;
@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class LocatorCreateDto {
+public class EventsAreaCreateDto {
     @NotNull
     Float lat;
     @NotNull

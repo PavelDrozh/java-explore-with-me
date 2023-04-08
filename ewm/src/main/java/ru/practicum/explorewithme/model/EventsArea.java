@@ -11,8 +11,8 @@ import javax.persistence.*;
 @ToString
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@Table(name = "locator", schema = "public")
-public class Locator {
+@Table(name = "events_area", schema = "public")
+public class EventsArea {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

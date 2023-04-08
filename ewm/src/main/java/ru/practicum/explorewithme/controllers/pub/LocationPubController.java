@@ -5,39 +5,39 @@ import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
-import ru.practicum.explorewithme.dto.locator.LocatorResponseDto;
-import ru.practicum.explorewithme.dto.locator.LocatorShortResponseDto;
-import ru.practicum.explorewithme.service.LocatorService;
+import ru.practicum.explorewithme.dto.events_area.EventsAreaResponseDto;
+import ru.practicum.explorewithme.dto.events_area.EventsAreaShortResponseDto;
+import ru.practicum.explorewithme.service.EventsAreaService;
 
 import java.util.List;
 
 @Slf4j
 @RestController
-@RequestMapping("/location")
+@RequestMapping("/eventsArea")
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class LocationPubController {
 
-    private static final String LOCATOR_PATH = "/{locatorId}";
+    private static final String LOCATOR_PATH = "/{eventsAreaId}";
 
-    LocatorService service;
+    EventsAreaService service;
 
     @GetMapping
-    public List<LocatorResponseDto> getAll(@RequestParam(required = false, defaultValue = "0") int from,
-                                           @RequestParam(required = false, defaultValue = "10") int size,
-                                           @RequestParam(required = false, defaultValue = "") String name) {
+    public List<EventsAreaResponseDto> getAll(@RequestParam(required = false, defaultValue = "0") int from,
+                                              @RequestParam(required = false, defaultValue = "10") int size,
+                                              @RequestParam(required = false, defaultValue = "") String name) {
         return service.getAll(from, size, name);
     }
 
     @GetMapping(LOCATOR_PATH)
-    public LocatorShortResponseDto getById(@PathVariable Long locatorId) {
-        return service.getPubById(locatorId);
+    public EventsAreaShortResponseDto getById(@PathVariable Long eventsAreaId) {
+        return service.getPubById(eventsAreaId);
     }
 
-    @GetMapping("/locator")
-    public LocatorShortResponseDto getByLocation(@RequestParam Float lat,
-                                                 @RequestParam Float lon) {
-        return service.getPubByLocation(lat, lon);
+    @GetMapping("/location")
+    public EventsAreaShortResponseDto getByLocation(@RequestParam Float pointLat,
+                                                    @RequestParam Float pointLon) {
+        return service.getPubByLocation(pointLat, pointLon);
     }
 
 }
