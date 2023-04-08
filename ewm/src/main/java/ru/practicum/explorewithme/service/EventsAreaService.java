@@ -13,7 +13,7 @@ public interface EventsAreaService {
 
     EventsAreaShortResponseDto getById(Long id);
 
-    EventsAreaShortResponseDto getByLocationInEventsArea(Float lat, Float lon);
+    EventsAreaShortResponseDto getByLocationInEventsArea(Float pointLat, Float pointLon);
 
     EventsAreaResponseDto create(EventsAreaCreateDto dto);
 
@@ -23,9 +23,9 @@ public interface EventsAreaService {
 
     EventsAreaShortResponseDto getByIdForUser(Long userId, Long locatorId);
 
-    EventsAreaShortResponseDto getByLocationForUser(Long userId, Float lat, Float lon);
+    EventsAreaShortResponseDto getByLocationForUser(Long userId, Float pointLat, Float pointLon);
 
     EventsAreaShortResponseDto getPubById(Long locatorId);
 
-    EventsAreaShortResponseDto getPubByLocation(Float lat, Float lon);
+    EventsAreaShortResponseDto getPubByLocation(Float pointLat, Float pointLon);
 }

@@ -65,8 +65,8 @@ public class EventsAreaServiceImpl implements EventsAreaService {
 
     @Transactional(readOnly = true)
     @Override
-    public EventsAreaShortResponseDto getByLocationInEventsArea(Float lat, Float lon) {
-        EventsArea founded = getEventsAreaByLoc(lat, lon);
+    public EventsAreaShortResponseDto getByLocationInEventsArea(Float pointLat, Float pointLon) {
+        EventsArea founded = getEventsAreaByLoc(pointLat, pointLon);
         List<EventShortDto> events = getEventsForAdmin(founded);
         return mapper.toEventsAreaShortResponseDto(founded, events);
     }
@@ -138,8 +138,8 @@ public class EventsAreaServiceImpl implements EventsAreaService {
 
     @Transactional(readOnly = true)
     @Override
-    public EventsAreaShortResponseDto getByLocationForUser(Long userId, Float lat, Float lon) {
-        EventsArea founded = getEventsAreaByLoc(lat, lon);
+    public EventsAreaShortResponseDto getByLocationForUser(Long userId, Float pointLat, Float pointLon) {
+        EventsArea founded = getEventsAreaByLoc(pointLat, pointLon);
         List<EventShortDto> events = getLocatorEvents(userId, founded);
         return mapper.toEventsAreaShortResponseDto(founded, events);
     }
@@ -162,8 +162,8 @@ public class EventsAreaServiceImpl implements EventsAreaService {
 
     @Transactional(readOnly = true)
     @Override
-    public EventsAreaShortResponseDto getPubByLocation(Float lat, Float lon) {
-        EventsArea founded = getEventsAreaByLoc(lat, lon);
+    public EventsAreaShortResponseDto getPubByLocation(Float pointLat, Float pointLon) {
+        EventsArea founded = getEventsAreaByLoc(pointLat, pointLon);
         List<EventShortDto> events = getPubEventsByLoc(founded);
         return mapper.toEventsAreaShortResponseDto(founded, events);
     }
