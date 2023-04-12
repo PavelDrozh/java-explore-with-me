@@ -1,6 +1,6 @@
 package ru.practicum.explorewithme.service;
 
-import ru.practicum.explorewithme.dto.*;
+import ru.practicum.explorewithme.dto.event.*;
 import ru.practicum.explorewithme.model.Event;
 import ru.practicum.explorewithme.model.State;
 

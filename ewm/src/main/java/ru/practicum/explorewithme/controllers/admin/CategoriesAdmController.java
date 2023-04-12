@@ -6,8 +6,8 @@ import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import ru.practicum.explorewithme.dto.CategoryCreateDto;
-import ru.practicum.explorewithme.dto.CategoryResponseDto;
+import ru.practicum.explorewithme.dto.category.CategoryCreateDto;
+import ru.practicum.explorewithme.dto.category.CategoryResponseDto;
 import ru.practicum.explorewithme.service.CategoryService;
 
 import javax.validation.Valid;

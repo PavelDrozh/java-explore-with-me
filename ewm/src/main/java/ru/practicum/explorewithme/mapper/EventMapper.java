@@ -5,9 +5,9 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Component;
-import ru.practicum.explorewithme.dto.EventCreateDto;
-import ru.practicum.explorewithme.dto.EventFullDto;
-import ru.practicum.explorewithme.dto.EventShortDto;
+import ru.practicum.explorewithme.dto.event.EventCreateDto;
+import ru.practicum.explorewithme.dto.event.EventFullDto;
+import ru.practicum.explorewithme.dto.event.EventShortDto;
 import ru.practicum.explorewithme.model.Event;
 
 import java.time.LocalDateTime;

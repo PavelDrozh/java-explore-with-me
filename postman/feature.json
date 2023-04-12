@@ -1,0 +1,2442 @@
+{
+	"info": {
+		"_postman_id": "388ca6b4-8802-439d-80fa-e30efcc9b239",
+		"name": "Test ExploreWith Me - Location Processing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24068364"
+	},
+	"item": [
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Events Area",
+					"item": [
+						{
+							"name": "Get ALL Empty",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200]);\r",
+											"});\r",
+											"pm.test(\"Test get all locators empty\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.length, 'locators count in total').to.eql(0);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/admin/eventsArea",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"admin",
+										"eventsArea"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Events Area",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+											"});\r",
+											"pm.test(\"Test create locator\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.id).to.eql(1);\r",
+											"    pm.expect(jsonData.name).to.eql('firstLocator');\r",
+											"    pm.expect(jsonData.lat).to.eql(10);\r",
+											"    pm.expect(jsonData.lon).to.eql(10);\r",
+											"    pm.expect(jsonData.distance).to.eql(300);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"firstLocator\",\r\n    \"lat\": 10,\r\n    \"lon\": 10,\r\n    \"distance\": 300\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/admin/eventsArea",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"admin",
+										"eventsArea"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create exist Name Events Area",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 409\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([409, 500]);\r",
+											"});\r",
+											"pm.test(\"Test create locator failed\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.reason).to.eql('Конфликт данных');\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"firstLocator\",\r\n    \"lat\": 10,\r\n    \"lon\": 10,\r\n    \"distance\": 15\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/admin/eventsArea",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"admin",
+										"eventsArea"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create exist Location Events Area",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 409\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([409, 500]);\r",
+											"});\r",
+											"pm.test(\"Test create locator failed\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.reason).to.eql('Конфликт данных');\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"secondLocator\",\r\n    \"lat\": 10,\r\n    \"lon\": 10,\r\n    \"distance\": 15\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/admin/eventsArea",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"admin",
+										"eventsArea"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Events Area incorrect Body",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([400, 500]);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"WrongLocator\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/admin/eventsArea",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"admin",
+										"eventsArea"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Events Area by Id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+											"});\r",
+											"pm.test(\"Test create locator\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.id).to.eql(1);\r",
+											"    pm.expect(jsonData.name).to.eql('firstLocator');\r",
+											"    pm.expect(jsonData.lat).to.eql(10);\r",
+											"    pm.expect(jsonData.lon).to.eql(10);\r",
+											"    pm.expect(jsonData.distance).to.eql(300);\r",
+											"    pm.expect(jsonData.events).to.exist;\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/admin/eventsArea/:eventsAreaId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"admin",
+										"eventsArea",
+										":eventsAreaId"
+									],
+									"variable": [
+										{
+											"key": "eventsAreaId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Events Area by Location",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+											"});\r",
+											"pm.test(\"Test create locator\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.id).to.eql(1);\r",
+											"    pm.expect(jsonData.name).to.eql('firstLocator');\r",
+											"    pm.expect(jsonData.lat).to.eql(10);\r",
+											"    pm.expect(jsonData.lon).to.eql(10);\r",
+											"    pm.expect(jsonData.distance).to.eql(300);\r",
+											"    pm.expect(jsonData.events).to.exist;\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/admin/eventsArea/location?pointLat=11&pointLon=11",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"admin",
+										"eventsArea",
+										"location"
+									],
+									"query": [
+										{
+											"key": "pointLat",
+											"value": "11"
+										},
+										{
+											"key": "pointLon",
+											"value": "11"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Events Area by Wrong Location",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([404,500]);\r",
+											"});\r",
+											"pm.test(\"Test error locator\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.reason).to.eql(\"Локатор не найден\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/admin/eventsArea/location?pointLat=15&pointLon=17",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"admin",
+										"eventsArea",
+										"location"
+									],
+									"query": [
+										{
+											"key": "pointLat",
+											"value": "15"
+										},
+										{
+											"key": "pointLon",
+											"value": "17"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Events Area by incorrect Id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([404,500]);\r",
+											"});\r",
+											"pm.test(\"Test error locator\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.reason).to.eql(\"Локатор не найден\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/admin/eventsArea/:eventsAreaId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"admin",
+										"eventsArea",
+										":eventsAreaId"
+									],
+									"variable": [
+										{
+											"key": "eventsAreaId",
+											"value": "120"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get ALL",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200]);\r",
+											"});\r",
+											"pm.test(\"Test get all locators\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.length, 'locators count in total').to.eql(1);\r",
+											"    pm.expect(jsonData[0].id).to.eql(1);\r",
+											"    pm.expect(jsonData[0].name).to.eql('firstLocator');\r",
+											"    pm.expect(jsonData[0].lat).to.eql(10);\r",
+											"    pm.expect(jsonData[0].lon).to.eql(10);\r",
+											"    pm.expect(jsonData[0].distance).to.eql(300);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/admin/eventsArea",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"admin",
+										"eventsArea"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Events Area",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+											"});\r",
+											"pm.test(\"Test create locator\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.id).to.eql(1);\r",
+											"    pm.expect(jsonData.name).to.eql('updatedLocator');\r",
+											"    pm.expect(jsonData.lat).to.eql(10);\r",
+											"    pm.expect(jsonData.lon).to.eql(10);\r",
+											"    pm.expect(jsonData.distance).to.eql(300);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"updatedLocator\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/admin/eventsArea/:eventsAreaId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"admin",
+										"eventsArea",
+										":eventsAreaId"
+									],
+									"variable": [
+										{
+											"key": "eventsAreaId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create second Events Area(id 4)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+											"});\r",
+											"pm.test(\"Test create locator\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.id).to.eql(4);\r",
+											"    pm.expect(jsonData.name).to.eql('secondLocator');\r",
+											"    pm.expect(jsonData.lat).to.eql(15);\r",
+											"    pm.expect(jsonData.lon).to.eql(15);\r",
+											"    pm.expect(jsonData.distance).to.eql(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"secondLocator\",\r\n    \"lat\": 15,\r\n    \"lon\": 15,\r\n    \"distance\": 200\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/admin/eventsArea",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"admin",
+										"eventsArea"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete second Events Area(id 4)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200,204]);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/admin/eventsArea/:eventsAreaId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"admin",
+										"eventsArea",
+										":eventsAreaId"
+									],
+									"variable": [
+										{
+											"key": "eventsAreaId",
+											"value": "4"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete wron Events Area",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([404,500]);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/admin/eventsArea/:eventsAreaId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"admin",
+										"eventsArea",
+										":eventsAreaId"
+									],
+									"variable": [
+										{
+											"key": "eventsAreaId",
+											"value": "120"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get ALL Empty Wrong Name",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200]);\r",
+											"});\r",
+											"pm.test(\"Test get all locators empty\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.length, 'locators count in total').to.eql(0);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/admin/eventsArea?name=asdasd",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"admin",
+										"eventsArea"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "asdasd"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Data Preparation",
+					"item": [
+						{
+							"name": "Create User",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"USER\",\r\n    \"email\": \"email@email.ru\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/admin/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"admin",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Category",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Ответ должен содержать код статуса 201 и данные в формате json\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"    pm.response.to.be.withBody;\r",
+											"    pm.response.to.be.json;\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"category\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/admin/categories",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"admin",
+										"categories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Event",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Ответ должен содержать код статуса 201 и данные в формате json\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"    pm.response.to.be.withBody;\r",
+											"    pm.response.to.be.json;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Test create event\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.id).to.eql(39);\r",
+											"    pm.expect(jsonData.annotation).to.eql(\"Небольшая аннотация события, которое я не могу придумать))\");\r",
+											"    pm.expect(jsonData.title).to.eql(\"Заголовок события\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"annotation\":\"Небольшая аннотация события, которое я не могу придумать))\",\r\n    \"category\": 1,\r\n    \"description\": \"Полное описание события, которое я не могу придумать\",\r\n    \"eventDate\": \"2023-10-07 02:47:46\",\r\n    \"paid\": \"FALSE\",\r\n    \"participantLimit\": 0,\r\n    \"requestModeration\": \"FALSE\",\r\n    \"title\": \"Заголовок события\",\r\n    \"location\": {\r\n        \"lat\": 11,\r\n        \"lon\": 11\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/users/:userId/events",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										":userId",
+										"events"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Event 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Ответ должен содержать код статуса 201 и данные в формате json\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"    pm.response.to.be.withBody;\r",
+											"    pm.response.to.be.json;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Test create event\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.id).to.eql(40);\r",
+											"    pm.expect(jsonData.annotation).to.eql(\"Небольшая аннотация ВТОРОГО события, которое я не могу придумать))\");\r",
+											"    pm.expect(jsonData.title).to.eql(\"Заголовок ВТОРОГО события\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"annotation\": \"Небольшая аннотация ВТОРОГО события, которое я не могу придумать))\",\r\n    \"category\": 1,\r\n    \"description\": \"Полное описание ВТОРОГО события, которое я не могу придумать\",\r\n    \"eventDate\": \"2023-11-07 02:47:46\",\r\n    \"paid\": \"FALSE\",\r\n    \"participantLimit\": 0,\r\n    \"requestModeration\": \"FALSE\",\r\n    \"title\": \"Заголовок ВТОРОГО события\",\r\n    \"location\": {\r\n        \"lat\": 12,\r\n        \"lon\": 11\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/users/:userId/events",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										":userId",
+										"events"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Events Area With Events",
+					"item": [
+						{
+							"name": "Get Events Area by Id With Events",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+											"});\r",
+											"pm.test(\"Test get locator with events\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.id).to.eql(1);\r",
+											"    pm.expect(jsonData.name).to.eql('updatedLocator');\r",
+											"    pm.expect(jsonData.lat).to.eql(10);\r",
+											"    pm.expect(jsonData.lon).to.eql(10);\r",
+											"    pm.expect(jsonData.distance).to.eql(300);\r",
+											"    pm.expect(jsonData.events).to.exist;\r",
+											"    pm.expect(jsonData.events.length, 'events count in total').to.eql(2);\r",
+											"    pm.expect(jsonData.events[0].annotation).to.eql(\"Небольшая аннотация события, которое я не могу придумать))\");\r",
+											"    pm.expect(jsonData.events[0].title).to.eql(\"Заголовок события\");\r",
+											"    pm.expect(jsonData.events[1].annotation).to.eql(\"Небольшая аннотация ВТОРОГО события, которое я не могу придумать))\");\r",
+											"    pm.expect(jsonData.events[1].title).to.eql(\"Заголовок ВТОРОГО события\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/admin/eventsArea/:eventsAreaId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"admin",
+										"eventsArea",
+										":eventsAreaId"
+									],
+									"variable": [
+										{
+											"key": "eventsAreaId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Events Area by Location With Events",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+											"});\r",
+											"pm.test(\"Test get locator with events\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.id).to.eql(1);\r",
+											"    pm.expect(jsonData.name).to.eql('updatedLocator');\r",
+											"    pm.expect(jsonData.lat).to.eql(10);\r",
+											"    pm.expect(jsonData.lon).to.eql(10);\r",
+											"    pm.expect(jsonData.distance).to.eql(300);\r",
+											"    pm.expect(jsonData.events).to.exist;\r",
+											"    pm.expect(jsonData.events.length, 'events count in total').to.eql(2);\r",
+											"    pm.expect(jsonData.events[0].annotation).to.eql(\"Небольшая аннотация события, которое я не могу придумать))\");\r",
+											"    pm.expect(jsonData.events[0].title).to.eql(\"Заголовок события\");\r",
+											"    pm.expect(jsonData.events[1].annotation).to.eql(\"Небольшая аннотация ВТОРОГО события, которое я не могу придумать))\");\r",
+											"    pm.expect(jsonData.events[1].title).to.eql(\"Заголовок ВТОРОГО события\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/admin/eventsArea/location?pointLat=11&pointLon=11",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"admin",
+										"eventsArea",
+										"location"
+									],
+									"query": [
+										{
+											"key": "pointLat",
+											"value": "11"
+										},
+										{
+											"key": "pointLon",
+											"value": "11"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Private",
+			"item": [
+				{
+					"name": "Data Preparation",
+					"item": [
+						{
+							"name": "Create Second User",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"NEW USER\",\r\n    \"email\": \"newemail@email.ru\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/admin/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"admin",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Event 3",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Ответ должен содержать код статуса 201 и данные в формате json\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"    pm.response.to.be.withBody;\r",
+											"    pm.response.to.be.json;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Test create event\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.id).to.eql(41);\r",
+											"    pm.expect(jsonData.annotation).to.eql(\"Небольшая аннотация ТРЕТЬЕГО события, ВТОРОГО пользователя\");\r",
+											"    pm.expect(jsonData.title).to.eql(\"Заголовок ТРЕТЬЕГО события\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"annotation\": \"Небольшая аннотация ТРЕТЬЕГО события, ВТОРОГО пользователя\",\r\n    \"category\": 1,\r\n    \"description\": \"Полное описание ТРЕТЬЕГО события, ВТОРОГО пользователя\",\r\n    \"eventDate\": \"2023-11-07 02:47:46\",\r\n    \"paid\": \"FALSE\",\r\n    \"participantLimit\": 0,\r\n    \"requestModeration\": \"FALSE\",\r\n    \"title\": \"Заголовок ТРЕТЬЕГО события\",\r\n    \"location\": {\r\n        \"lat\": 11,\r\n        \"lon\": 12\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/users/:userId/events",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										":userId",
+										"events"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Events Area With Events",
+					"item": [
+						{
+							"name": "Get ALL Empty Wrong Name",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200]);\r",
+											"});\r",
+											"pm.test(\"Test get all locators\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.length, 'locators count in total').to.eql(0);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/users/:userId/eventsArea?name=first",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										":userId",
+										"eventsArea"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "first"
+										}
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get ALL",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200]);\r",
+											"});\r",
+											"pm.test(\"Test get all locators\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.length, 'locators count in total').to.eql(1);\r",
+											"    pm.expect(jsonData[0].id).to.eql(1);\r",
+											"    pm.expect(jsonData[0].name).to.eql('updatedLocator');\r",
+											"    pm.expect(jsonData[0].lat).to.eql(10);\r",
+											"    pm.expect(jsonData[0].lon).to.eql(10);\r",
+											"    pm.expect(jsonData[0].distance).to.eql(300);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/users/:userId/eventsArea",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										":userId",
+										"eventsArea"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Events Area by Id For User 1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+											"});\r",
+											"pm.test(\"Test get locator with events\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.id).to.eql(1);\r",
+											"    pm.expect(jsonData.name).to.eql('updatedLocator');\r",
+											"    pm.expect(jsonData.lat).to.eql(10);\r",
+											"    pm.expect(jsonData.lon).to.eql(10);\r",
+											"    pm.expect(jsonData.distance).to.eql(300);\r",
+											"    pm.expect(jsonData.events).to.exist;\r",
+											"    pm.expect(jsonData.events.length, 'events count in total').to.eql(2);\r",
+											"    pm.expect(jsonData.events[0].annotation).to.eql(\"Небольшая аннотация события, которое я не могу придумать))\");\r",
+											"    pm.expect(jsonData.events[0].title).to.eql(\"Заголовок события\");\r",
+											"    pm.expect(jsonData.events[1].annotation).to.eql(\"Небольшая аннотация ВТОРОГО события, которое я не могу придумать))\");\r",
+											"    pm.expect(jsonData.events[1].title).to.eql(\"Заголовок ВТОРОГО события\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/users/:userId/eventsArea/:eventsAreaId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										":userId",
+										"eventsArea",
+										":eventsAreaId"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "1"
+										},
+										{
+											"key": "eventsAreaId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Events Area by Id For User 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+											"});\r",
+											"pm.test(\"Test get locator with events\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.id).to.eql(1);\r",
+											"    pm.expect(jsonData.name).to.eql('updatedLocator');\r",
+											"    pm.expect(jsonData.lat).to.eql(10);\r",
+											"    pm.expect(jsonData.lon).to.eql(10);\r",
+											"    pm.expect(jsonData.distance).to.eql(300);\r",
+											"    pm.expect(jsonData.events).to.exist;\r",
+											"    pm.expect(jsonData.events.length, 'events count in total').to.eql(1);\r",
+											"    pm.expect(jsonData.events[0].annotation).to.eql(\"Небольшая аннотация ТРЕТЬЕГО события, ВТОРОГО пользователя\");\r",
+											"    pm.expect(jsonData.events[0].title).to.eql(\"Заголовок ТРЕТЬЕГО события\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/users/:userId/eventsArea/:eventsAreaId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										":userId",
+										"eventsArea",
+										":eventsAreaId"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "2"
+										},
+										{
+											"key": "eventsAreaId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Events Area by Loc For User 1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+											"});\r",
+											"pm.test(\"Test get locator with events\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.id).to.eql(1);\r",
+											"    pm.expect(jsonData.name).to.eql('updatedLocator');\r",
+											"    pm.expect(jsonData.lat).to.eql(10);\r",
+											"    pm.expect(jsonData.lon).to.eql(10);\r",
+											"    pm.expect(jsonData.distance).to.eql(300);\r",
+											"    pm.expect(jsonData.events).to.exist;\r",
+											"    pm.expect(jsonData.events.length, 'events count in total').to.eql(2);\r",
+											"    pm.expect(jsonData.events[0].annotation).to.eql(\"Небольшая аннотация события, которое я не могу придумать))\");\r",
+											"    pm.expect(jsonData.events[0].title).to.eql(\"Заголовок события\");\r",
+											"    pm.expect(jsonData.events[1].annotation).to.eql(\"Небольшая аннотация ВТОРОГО события, которое я не могу придумать))\");\r",
+											"    pm.expect(jsonData.events[1].title).to.eql(\"Заголовок ВТОРОГО события\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/users/:userId/eventsArea/location?pointLat=11&pointLon=11",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										":userId",
+										"eventsArea",
+										"location"
+									],
+									"query": [
+										{
+											"key": "pointLat",
+											"value": "11"
+										},
+										{
+											"key": "pointLon",
+											"value": "11"
+										}
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Events Area by Loc For User 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+											"});\r",
+											"pm.test(\"Test get locator with events\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.id).to.eql(1);\r",
+											"    pm.expect(jsonData.name).to.eql('updatedLocator');\r",
+											"    pm.expect(jsonData.lat).to.eql(10);\r",
+											"    pm.expect(jsonData.lon).to.eql(10);\r",
+											"    pm.expect(jsonData.distance).to.eql(300);\r",
+											"    pm.expect(jsonData.events).to.exist;\r",
+											"    pm.expect(jsonData.events.length, 'events count in total').to.eql(1);\r",
+											"    pm.expect(jsonData.events[0].annotation).to.eql(\"Небольшая аннотация ТРЕТЬЕГО события, ВТОРОГО пользователя\");\r",
+											"    pm.expect(jsonData.events[0].title).to.eql(\"Заголовок ТРЕТЬЕГО события\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/users/:userId/eventsArea/location?pointLat=11&pointLon=11",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										":userId",
+										"eventsArea",
+										"location"
+									],
+									"query": [
+										{
+											"key": "pointLat",
+											"value": "11"
+										},
+										{
+											"key": "pointLon",
+											"value": "11"
+										}
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Events Area by incorrect Id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([404,500]);\r",
+											"});\r",
+											"pm.test(\"Test error locator\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.reason).to.eql(\"Локатор не найден\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/users/:userId/eventsArea/:eventsAreaId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										":userId",
+										"eventsArea",
+										":eventsAreaId"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "1"
+										},
+										{
+											"key": "eventsAreaId",
+											"value": "120"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Events Area by Wrong Location",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([404,500]);\r",
+											"});\r",
+											"pm.test(\"Test error locator\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.reason).to.eql(\"Локатор не найден\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/users/:userId/eventsArea/location?pointLat=20&pointLon=20",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										":userId",
+										"eventsArea",
+										"location"
+									],
+									"query": [
+										{
+											"key": "pointLat",
+											"value": "20"
+										},
+										{
+											"key": "pointLon",
+											"value": "20"
+										}
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Public",
+			"item": [
+				{
+					"name": "No Pub Event ALL empty",
+					"item": [
+						{
+							"name": "Get ALL Empty Wrong Name",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200]);\r",
+											"});\r",
+											"pm.test(\"Test get all locators empty\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.length, 'locators count in total').to.eql(0);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/eventsArea?name=asdasd",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"eventsArea"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "asdasd"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get ALL",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200]);\r",
+											"});\r",
+											"pm.test(\"Test get all locators\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.length, 'locators count in total').to.eql(1);\r",
+											"    pm.expect(jsonData[0].id).to.eql(1);\r",
+											"    pm.expect(jsonData[0].name).to.eql('updatedLocator');\r",
+											"    pm.expect(jsonData[0].lat).to.eql(10);\r",
+											"    pm.expect(jsonData[0].lon).to.eql(10);\r",
+											"    pm.expect(jsonData[0].distance).to.eql(300);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/eventsArea",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"eventsArea"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Events Area by incorrect Id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([404,500]);\r",
+											"});\r",
+											"pm.test(\"Test error locator\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.reason).to.eql(\"Локатор не найден\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/eventsArea/:eventsAreaId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"eventsArea",
+										":eventsAreaId"
+									],
+									"variable": [
+										{
+											"key": "eventsAreaId",
+											"value": "120"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Events Area by Wrong Location",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([404,500]);\r",
+											"});\r",
+											"pm.test(\"Test error locator\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.reason).to.eql(\"Локатор не найден\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/eventsArea/location?pointLat=20&pointLon=20",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"eventsArea",
+										"location"
+									],
+									"query": [
+										{
+											"key": "pointLat",
+											"value": "20"
+										},
+										{
+											"key": "pointLon",
+											"value": "20"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Events Area by Id Events Empty",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+											"});\r",
+											"pm.test(\"Test create locator\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.id).to.eql(1);\r",
+											"    pm.expect(jsonData.name).to.eql('updatedLocator');\r",
+											"    pm.expect(jsonData.lat).to.eql(10);\r",
+											"    pm.expect(jsonData.lon).to.eql(10);\r",
+											"    pm.expect(jsonData.distance).to.eql(300);\r",
+											"    pm.expect(jsonData.events).to.exist;\r",
+											"    pm.expect(jsonData.events.length).to.eql(0);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/eventsArea/:eventsAreaId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"eventsArea",
+										":eventsAreaId"
+									],
+									"variable": [
+										{
+											"key": "eventsAreaId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Events Area by Location",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+											"});\r",
+											"pm.test(\"Test create locator\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.id).to.eql(1);\r",
+											"    pm.expect(jsonData.name).to.eql('updatedLocator');\r",
+											"    pm.expect(jsonData.lat).to.eql(10);\r",
+											"    pm.expect(jsonData.lon).to.eql(10);\r",
+											"    pm.expect(jsonData.distance).to.eql(300);\r",
+											"    pm.expect(jsonData.events).to.exist;\r",
+											"    pm.expect(jsonData.events.length).to.eql(0);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/eventsArea/location?pointLat=11&pointLon=11",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"eventsArea",
+										"location"
+									],
+									"query": [
+										{
+											"key": "pointLat",
+											"value": "11"
+										},
+										{
+											"key": "pointLon",
+											"value": "11"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Data Preparation",
+					"item": [
+						{
+							"name": "PUBLISH EVENT 1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function () {\r",
+											"    pm.response.to.be.ok;    \r",
+											"    pm.response.to.be.withBody;\r",
+											"    pm.response.to.be.json;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Test create event\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.id).to.eql(39);\r",
+											"    pm.expect(jsonData.annotation).to.eql(\"Небольшая аннотация события, которое я не могу придумать))\");\r",
+											"    pm.expect(jsonData.title).to.eql(\"Заголовок события\");\r",
+											"    pm.expect(jsonData.state).to.eql(\"PUBLISHED\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"stateAction\": \"PUBLISH_EVENT\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/admin/events/:eventId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"admin",
+										"events",
+										":eventId"
+									],
+									"variable": [
+										{
+											"key": "eventId",
+											"value": "39"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "PUBLISH EVENT 3",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function () {\r",
+											"    pm.response.to.be.ok;    \r",
+											"    pm.response.to.be.withBody;\r",
+											"    pm.response.to.be.json;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Test create event\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.id).to.eql(41);\r",
+											"    pm.expect(jsonData.annotation).to.eql(\"Небольшая аннотация ТРЕТЬЕГО события, ВТОРОГО пользователя\");\r",
+											"    pm.expect(jsonData.title).to.eql(\"Заголовок ТРЕТЬЕГО события\");\r",
+											"    pm.expect(jsonData.state).to.eql(\"PUBLISHED\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"stateAction\": \"PUBLISH_EVENT\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/admin/events/:eventId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"admin",
+										"events",
+										":eventId"
+									],
+									"variable": [
+										{
+											"key": "eventId",
+											"value": "41"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Events Area With Events",
+					"item": [
+						{
+							"name": "Get Events Area by Id (Published events)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+											"});\r",
+											"pm.test(\"Test get locator with events\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.id).to.eql(1);\r",
+											"    pm.expect(jsonData.name).to.eql('updatedLocator');\r",
+											"    pm.expect(jsonData.lat).to.eql(10);\r",
+											"    pm.expect(jsonData.lon).to.eql(10);\r",
+											"    pm.expect(jsonData.distance).to.eql(300);\r",
+											"    pm.expect(jsonData.events).to.exist;\r",
+											"    pm.expect(jsonData.events.length, 'events count in total').to.eql(2);\r",
+											"    pm.expect(jsonData.events[0].annotation).to.eql(\"Небольшая аннотация события, которое я не могу придумать))\");\r",
+											"    pm.expect(jsonData.events[0].title).to.eql(\"Заголовок события\");\r",
+											"    pm.expect(jsonData.events[1].annotation).to.eql(\"Небольшая аннотация ТРЕТЬЕГО события, ВТОРОГО пользователя\");\r",
+											"    pm.expect(jsonData.events[1].title).to.eql(\"Заголовок ТРЕТЬЕГО события\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/eventsArea/:eventsAreaId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"eventsArea",
+										":eventsAreaId"
+									],
+									"variable": [
+										{
+											"key": "eventsAreaId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Events Area by Loc (Published Events)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+											"});\r",
+											"pm.test(\"Test get locator with events\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.id).to.eql(1);\r",
+											"    pm.expect(jsonData.name).to.eql('updatedLocator');\r",
+											"    pm.expect(jsonData.lat).to.eql(10);\r",
+											"    pm.expect(jsonData.lon).to.eql(10);\r",
+											"    pm.expect(jsonData.distance).to.eql(300);\r",
+											"    pm.expect(jsonData.events).to.exist;\r",
+											"    pm.expect(jsonData.events.length, 'events count in total').to.eql(2);\r",
+											"    pm.expect(jsonData.events[0].annotation).to.eql(\"Небольшая аннотация события, которое я не могу придумать))\");\r",
+											"    pm.expect(jsonData.events[0].title).to.eql(\"Заголовок события\");\r",
+											"    pm.expect(jsonData.events[1].annotation).to.eql(\"Небольшая аннотация ТРЕТЬЕГО события, ВТОРОГО пользователя\");\r",
+											"    pm.expect(jsonData.events[1].title).to.eql(\"Заголовок ТРЕТЬЕГО события\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/eventsArea/location?pointLat=11&pointLon=11",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"eventsArea",
+										"location"
+									],
+									"query": [
+										{
+											"key": "pointLat",
+											"value": "11"
+										},
+										{
+											"key": "pointLon",
+											"value": "11"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080",
+			"type": "string"
+		}
+	]
+}

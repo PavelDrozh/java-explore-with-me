@@ -1,14 +1,15 @@
-package ru.practicum.explorewithme.dto;
+package ru.practicum.explorewithme.dto.events_area;
 
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
 
-import javax.validation.constraints.NotBlank;
-
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class CategoryCreateDto {
-    @NotBlank
+public class EventsAreaUpdateDto {
+
+    Float lat;
+    Float lon;
+    Float distance;
     String name;
 }

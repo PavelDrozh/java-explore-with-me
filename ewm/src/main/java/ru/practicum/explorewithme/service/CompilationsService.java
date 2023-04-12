@@ -1,8 +1,8 @@
 package ru.practicum.explorewithme.service;
 
-import ru.practicum.explorewithme.dto.CompilationCreateDto;
-import ru.practicum.explorewithme.dto.CompilationResponseDto;
-import ru.practicum.explorewithme.dto.CompilationUpdateDto;
+import ru.practicum.explorewithme.dto.compilation.CompilationCreateDto;
+import ru.practicum.explorewithme.dto.compilation.CompilationResponseDto;
+import ru.practicum.explorewithme.dto.compilation.CompilationUpdateDto;
 
 import java.util.List;
 

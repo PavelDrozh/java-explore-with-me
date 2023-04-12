@@ -1,8 +1,8 @@
 package ru.practicum.explorewithme.mapper;
 
 import org.springframework.stereotype.Component;
-import ru.practicum.explorewithme.dto.CategoryCreateDto;
-import ru.practicum.explorewithme.dto.CategoryResponseDto;
+import ru.practicum.explorewithme.dto.category.CategoryCreateDto;
+import ru.practicum.explorewithme.dto.category.CategoryResponseDto;
 import ru.practicum.explorewithme.model.Category;
 
 @Component
