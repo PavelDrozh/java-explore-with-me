@@ -46,9 +46,872 @@
     {
       "description": "API для работы с подборками событий",
       "name": "Admin: Подборки событий"
+    },
+    {
+      "description": "Публичный API для работы с Локациями",
+      "name": "Public: Локации"
+    },
+    {
+      "description": "API для работы с локациями",
+      "name": "Admin: Локации"
+    },
+    {
+      "description": "Закрытый API для работы с Локациями",
+      "name": "Private: Локации"
     }
   ],
   "paths": {
+
+    "/eventsArea": {
+      "get": {
+        "operationId": "getAllEventsAreaPublic",
+        "parameters": [
+          {
+            "description": "Ключевое слово",
+            "in": "path",
+            "name": "name",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество локаций, которые нужно пропустить для формирования текущего набора",
+            "in": "query",
+            "name": "from",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            }
+          },
+          {
+            "description": "количество локаций в наборе",
+            "in": "query",
+            "name": "size",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EventsAreaResponseDto"
+                  }
+                }
+              }
+            },
+            "description": "Локации найдены"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "BAD_REQUEST",
+                  "reason": "Incorrectly made request.",
+                  "message": "Failed to convert value of type java.lang.String to required type int; nested exception is java.lang.NumberFormatException: For input string: ad",
+                  "timestamp": "2022-09-07 09:10:50"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Запрос составлен некорректно"
+          }
+        },
+        "summary": "Поиск локаций по имени",
+        "tags": [
+          "Public: Локации"
+        ]
+      }
+    },
+    "/eventsArea/{eventsAreaId}": {
+      "get": {
+        "operationId": "getEventsAreaShortResponsePublic",
+        "parameters": [
+          {
+            "description": "id Локации",
+            "in": "path",
+            "name": "eventsAreaId",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EventsAreaShortResponseDto"
+                }
+              }
+            },
+            "description": "Локация найдена"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "BAD_REQUEST",
+                  "reason": "Incorrectly made request.",
+                  "message": "Failed to convert value of type java.lang.String to required type int; nested exception is java.lang.NumberFormatException: For input string: ad",
+                  "timestamp": "2022-09-07 09:10:50"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Запрос составлен некорректно"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "NOT_FOUND",
+                  "reason": "The required object was not found.",
+                  "message": "EventsArea with id=27 was not found",
+                  "timestamp": "2022-09-07 09:10:50"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Локация не найдена или недоступна"
+          }
+        },
+        "summary": "Поиск локаций по id (В выборку событий в локации входят только опубликованные)",
+        "tags": [
+          "Public: Локации"
+        ]
+      }
+    },
+
+    "/eventsArea/location": {
+      "get": {
+        "operationId": "getEventsAreaShortResponseByLocationPublic",
+        "parameters": [
+          {
+            "description": "широта локации",
+            "in": "query",
+            "name": "pointLat",
+            "required": true,
+            "schema": {
+              "format": "float",
+              "example": 13.54
+            }
+          },
+          {
+            "description": "долгота локации",
+            "in": "query",
+            "name": "pointLon",
+            "required": true,
+            "schema": {
+              "format": "float",
+              "example": 53.18
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EventsAreaShortResponseDto"
+                }
+              }
+            },
+            "description": "Локация найдена"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "BAD_REQUEST",
+                  "reason": "Incorrectly made request.",
+                  "message": "Failed to convert value of type java.lang.String to required type float; nested exception is java.lang.NumberFormatException: For input string: ad",
+                  "timestamp": "2022-09-07 09:10:50"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Запрос составлен некорректно"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "NOT_FOUND",
+                  "reason": "The required object was not found.",
+                  "message": "EventsArea with lat = 13.54 and lon = 53.18 was not found",
+                  "timestamp": "2022-09-07 09:10:50"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Локация не найдена или недоступна"
+          }
+        },
+        "summary": "Поиск локаций по долготе и широте",
+        "tags": [
+          "Public: Локации"
+        ]
+      }
+    },
+    "/users/{userId}/eventsArea": {
+      "get": {
+        "operationId": "getAllEventsAreaForUser",
+        "parameters": [
+          {
+            "description": "id текущего пользователя",
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "description": "Ключевое слово",
+            "in": "path",
+            "name": "name",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество локаций, которые нужно пропустить для формирования текущего набора",
+            "in": "query",
+            "name": "from",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            }
+          },
+          {
+            "description": "количество локаций в наборе",
+            "in": "query",
+            "name": "size",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EventsAreaResponseDto"
+                  }
+                }
+              }
+            },
+            "description": "Локации найдены"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "BAD_REQUEST",
+                  "reason": "Incorrectly made request.",
+                  "message": "Failed to convert value of type java.lang.String to required type int; nested exception is java.lang.NumberFormatException: For input string: ad",
+                  "timestamp": "2022-09-07 09:10:50"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Запрос составлен некорректно"
+          }
+        },
+        "summary": "Поиск локаций по имени",
+        "tags": [
+          "Private: Локации"
+        ]
+      }
+    },
+    "/users/{userId}/eventsArea/{eventsAreaId}": {
+      "get": {
+        "operationId": "getEventsAreaShortResponsePrivate",
+        "parameters": [
+          {
+            "description": "id текущего пользователя",
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "description": "id Локации",
+            "in": "path",
+            "name": "eventsAreaId",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EventsAreaShortResponseDto"
+                }
+              }
+            },
+            "description": "Локация найдена"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "BAD_REQUEST",
+                  "reason": "Incorrectly made request.",
+                  "message": "Failed to convert value of type java.lang.String to required type int; nested exception is java.lang.NumberFormatException: For input string: ad",
+                  "timestamp": "2022-09-07 09:10:50"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Запрос составлен некорректно"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "NOT_FOUND",
+                  "reason": "The required object was not found.",
+                  "message": "EventsArea with id=27 was not found",
+                  "timestamp": "2022-09-07 09:10:50"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Локация не найдена или недоступна"
+          }
+        },
+        "summary": "Поиск локаций по id (Показывает так-же события, зарегистрированные пользователем)",
+        "tags": [
+          "Private: Локации"
+        ]
+      }
+    },
+    "/users/{userId}/eventsArea/location": {
+      "get": {
+        "operationId": "getEventsAreaShortResponseByLocationPrivate",
+        "parameters": [
+          {
+            "description": "id текущего пользователя",
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "description": "широта локации",
+            "in": "query",
+            "name": "pointLat",
+            "required": true,
+            "schema": {
+              "format": "float",
+              "example": 13.54
+            }
+          },
+          {
+            "description": "долгота локации",
+            "in": "query",
+            "name": "pointLon",
+            "required": true,
+            "schema": {
+              "format": "float",
+              "example": 53.18
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EventsAreaShortResponseDto"
+                }
+              }
+            },
+            "description": "Локация найдена"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "BAD_REQUEST",
+                  "reason": "Incorrectly made request.",
+                  "message": "Failed to convert value of type java.lang.String to required type float; nested exception is java.lang.NumberFormatException: For input string: ad",
+                  "timestamp": "2022-09-07 09:10:50"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Запрос составлен некорректно"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "NOT_FOUND",
+                  "reason": "The required object was not found.",
+                  "message": "EventsArea with lat = 13.54 and lon = 53.18 was not found",
+                  "timestamp": "2022-09-07 09:10:50"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Локация не найдена или недоступна"
+          }
+        },
+        "summary": "Поиск локаций по долготе и широте (Показывает так-же события, зарегистрированные пользователем)",
+        "tags": [
+          "Private: Локации"
+        ]
+      }
+    },
+    "/admin/eventsArea": {
+      "get": {
+        "operationId": "getAllEventsArea",
+        "parameters": [
+          {
+            "description": "Ключевое слово",
+            "in": "path",
+            "name": "name",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество локаций, которые нужно пропустить для формирования текущего набора",
+            "in": "query",
+            "name": "from",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            }
+          },
+          {
+            "description": "количество локаций в наборе",
+            "in": "query",
+            "name": "size",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EventsAreaResponseDto"
+                  }
+                }
+              }
+            },
+            "description": "Локации найдены"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "BAD_REQUEST",
+                  "reason": "Incorrectly made request.",
+                  "message": "Failed to convert value of type java.lang.String to required type int; nested exception is java.lang.NumberFormatException: For input string: ad",
+                  "timestamp": "2022-09-07 09:10:50"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Запрос составлен некорректно"
+          }
+        },
+        "summary": "Поиск локаций по имени",
+        "tags": [
+          "Admin: Локации"
+        ]
+      },
+      "post": {
+        "description": "Обратите внимание: дата и время на которые намечено событие не может быть раньше, чем через два часа от текущего момента",
+        "operationId": "addEventArea",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EventsAreaCreateDto"
+              }
+            }
+          },
+          "description": "данные добавляемой локации",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EventsAreaResponseDto"
+                }
+              }
+            },
+            "description": "Событие добавлено"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "BAD_REQUEST",
+                  "reason": "Incorrectly made request.",
+                  "message": "Field: lat. Error: must not be null. Value: null",
+                  "timestamp": "2022-09-07 09:10:50"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Запрос составлен некорректно"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "FORBIDDEN",
+                  "reason": "For the requested operation the conditions are not met.",
+                  "message": "Field: name. Error: Локация с именем = Москва уже существует.",
+                  "timestamp": "2022-09-07 09:10:50"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Локация не удовлетворяет правилам создания"
+          }
+        },
+        "summary": "Добавление новой локации",
+        "tags": [
+          "Admin: Локации"
+        ]
+      }
+    },
+    "/admin/eventsArea/{eventsAreaId}": {
+      "get": {
+        "operationId": "getEventsAreaShortResponse",
+        "parameters": [
+          {
+            "description": "id Локации",
+            "in": "path",
+            "name": "eventsAreaId",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EventsAreaShortResponseDto"
+                }
+              }
+            },
+            "description": "Локация найдена"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "BAD_REQUEST",
+                  "reason": "Incorrectly made request.",
+                  "message": "Failed to convert value of type java.lang.String to required type int; nested exception is java.lang.NumberFormatException: For input string: ad",
+                  "timestamp": "2022-09-07 09:10:50"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Запрос составлен некорректно"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "NOT_FOUND",
+                  "reason": "The required object was not found.",
+                  "message": "EventsArea with id=27 was not found",
+                  "timestamp": "2022-09-07 09:10:50"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Локация не найдена или недоступна"
+          }
+        },
+        "summary": "Поиск локаций по id",
+        "tags": [
+          "Admin: Локации"
+        ]
+      },
+      "delete": {
+        "description": "Обратите внимание: с категорией не должно быть связано ни одного события.",
+        "operationId": "deleteEventArea",
+        "parameters": [
+          {
+            "description": "id категории",
+            "in": "path",
+            "name": "eventsAreaId",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Локация удалена"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "NOT_FOUND",
+                  "reason": "The required object was not found.",
+                  "message": "EventsArea with id=27 was not found",
+                  "timestamp": "2022-09-07 09:10:50"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Локация не найдена или недоступна"
+          }
+        },
+        "summary": "Удаление Локации",
+        "tags": [
+          "Admin: Локации"
+        ]
+      },
+      "patch": {
+        "description": "Обратите внимание: имя локации должно быть уникальным",
+        "operationId": "updateEventArea",
+        "parameters": [
+          {
+            "description": "id Локации",
+            "in": "path",
+            "name": "eventsAreaId",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EventsAreaUpdateDto"
+              }
+            }
+          },
+          "description": "Данные Локации для изменения",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EventsAreaResponseDto"
+                }
+              }
+            },
+            "description": "Данные Локации изменены"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "NOT_FOUND",
+                  "reason": "The required object was not found.",
+                  "message": "Category with id=27 was not found",
+                  "timestamp": "2022-09-07 09:10:50"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Локация не найдена или недоступна"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "CONFLICT",
+                  "reason": "Integrity constraint has been violated.",
+                  "message": "could not execute statement; SQL [n/a]; constraint [uq_category_name]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement",
+                  "timestamp": "2022-09-07 09:10:50"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Нарушение целостности данных"
+          }
+        },
+        "summary": "Изменение Локации",
+        "tags": [
+          "Admin: Локации"
+        ]
+      }
+    },
+    "/admin/eventsArea/location": {
+      "get": {
+        "operationId": "getEventsAreaShortResponseByLocation",
+        "parameters": [
+          {
+            "description": "широта локации",
+            "in": "query",
+            "name": "pointLat",
+            "required": true,
+            "schema": {
+              "format": "float",
+              "example": 13.54
+            }
+          },
+          {
+            "description": "долгота локации",
+            "in": "query",
+            "name": "pointLon",
+            "required": true,
+            "schema": {
+              "format": "float",
+              "example": 53.18
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EventsAreaShortResponseDto"
+                }
+              }
+            },
+            "description": "Локация найдена"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "BAD_REQUEST",
+                  "reason": "Incorrectly made request.",
+                  "message": "Failed to convert value of type java.lang.String to required type float; nested exception is java.lang.NumberFormatException: For input string: ad",
+                  "timestamp": "2022-09-07 09:10:50"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Запрос составлен некорректно"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "NOT_FOUND",
+                  "reason": "The required object was not found.",
+                  "message": "EventsArea with lat = 13.54 and lon = 53.18 was not found",
+                  "timestamp": "2022-09-07 09:10:50"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Локация не найдена или недоступна"
+          }
+        },
+        "summary": "Поиск локаций по долготе и широте",
+        "tags": [
+          "Admin: Локации"
+        ]
+      }
+    },
+
     "/admin/categories": {
       "post": {
         "description": "Обратите внимание: имя категории должно быть уникальным",
@@ -2083,6 +2946,164 @@
           }
         },
         "description": "Сведения об ошибке"
+      },
+      "EventsAreaResponseDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Идентификатор",
+            "format": "int64",
+            "readOnly": true,
+            "example": 1
+          },
+          "lat": {
+            "type": "number",
+            "description": "Широта",
+            "format": "float",
+            "example": 55.754167
+          },
+          "lon": {
+            "type": "number",
+            "description": "Долгота",
+            "format": "float",
+            "example": 37.62
+          },
+          "distance": {
+            "type": "number",
+            "description": "Дистанция",
+            "format": "float",
+            "example": 17.29
+          },
+          "name": {
+            "type": "string",
+            "description": "Название локации",
+            "example": "Москва"
+          }
+        },
+        "description": "Локация"
+      },
+      "EventsAreaShortResponseDto" :{
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Идентификатор",
+            "format": "int64",
+            "readOnly": true,
+            "example": 1
+          },
+          "lat": {
+            "type": "number",
+            "description": "Широта",
+            "format": "float",
+            "example": 55.754167
+          },
+          "lon": {
+            "type": "number",
+            "description": "Долгота",
+            "format": "float",
+            "example": 37.62
+          },
+          "distance": {
+            "type": "number",
+            "description": "Дистанция",
+            "format": "float",
+            "example": 17.29
+          },
+          "name": {
+            "type": "string",
+            "description": "Название локации",
+            "example": "Москва"
+          },
+          "events": {
+            "uniqueItems": true,
+            "type": "array",
+            "description": "Список событий проходящих на территории локации",
+            "example": [
+              {
+                "annotation": "Эксклюзивность нашего шоу гарантирует привлечение максимальной зрительской аудитории",
+                "category": {
+                  "id": 1,
+                  "name": "Концерты"
+                },
+                "confirmedRequests": 5,
+                "eventDate": "2024-03-10 14:30:00",
+                "id": 1,
+                "initiator": {
+                  "id": 3,
+                  "name": "Фёдоров Матвей"
+                },
+                "paid": true,
+                "title": "Знаменитое шоу 'Летающая кукуруза'",
+                "views": 999
+              }
+            ]
+          }
+        },
+        "description": "Локация с событиями в ее радиусе"
+      },
+      "EventsAreaCreateDto" : {
+        "required": [
+          "lat",
+          "lon",
+          "distance",
+          "name"
+        ],
+        "properties": {
+          "lat": {
+            "type": "number",
+            "description": "Широта",
+            "format": "float",
+            "example": 55.754167
+          },
+          "lon": {
+            "type": "number",
+            "description": "Долгота",
+            "format": "float",
+            "example": 37.62
+          },
+          "distance": {
+            "type": "number",
+            "description": "Дистанция",
+            "format": "float",
+            "example": 17.29
+          },
+          "name": {
+            "type": "string",
+            "description": "Название локации",
+            "example": "Москва"
+          }
+        },
+        "description": "Локация"
+      },
+      "EventsAreaUpdateDto": {
+        "properties": {
+          "lat": {
+            "type": "number",
+            "description": "Широта",
+            "format": "float",
+            "example": 55.754167
+          },
+          "lon": {
+            "type": "number",
+            "description": "Долгота",
+            "format": "float",
+            "example": 37.62
+          },
+          "distance": {
+            "type": "number",
+            "description": "Дистанция",
+            "format": "float",
+            "example": 17.29
+          },
+          "name": {
+            "type": "string",
+            "description": "Название локации",
+            "example": "Москва"
+          }
+        },
+        "description": "Данные для обновлегия Локации"
       },
       "CategoryDto": {
         "required": [
